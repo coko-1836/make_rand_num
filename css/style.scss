@@ -1,0 +1,49 @@
+body{
+    background-color: #fff;
+    header{
+        padding: 1em;
+        margin-bottom: 1em;
+        border-bottom: 1px solid #ccc;
+        h1{
+            text-align: center;
+        }        
+    }
+    main{
+        margin: 1em;
+        input{
+            border: 1px solid #000;
+            border-radius: 0.5em;
+            padding: 0.5em;
+            &#max,&#min{
+                width: 5em;
+                height: 1.5em;
+            }
+            &#amount{
+                width: 5em;
+                height: 1.5em;
+            }
+        }
+        p{
+            margin: 0.5em;
+        }
+        button{
+            margin: 0.5em 0;
+            padding:0.25em 0.5em;
+            border: 1px solid #000;
+            border-radius: 0.5em;
+            background-color: #ccc;
+        }
+        #export-box{
+            margin:1em;
+            padding: 1em;
+            border: 1px solid #ccc;
+        }
+    }
+    footer{
+        background-color: #eee;
+        padding: 1em;
+        margin-top: 1em;
+        border-top: 0.3em solid #ff8c00;
+        text-align: center;
+    }
+}
