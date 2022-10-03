@@ -1,5 +1,7 @@
 body{
     background-color: #fff;
+    margin:0;
+    padding:0;
     header{
         padding: 1em;
         margin-bottom: 1em;
@@ -11,32 +13,40 @@ body{
     main{
         margin: 1em;
         input{
-            border: 1px solid #000;
-            border-radius: 0.5em;
-            padding: 0.5em;
-            &#max,&#min{
-                width: 5em;
-                height: 1.5em;
+            border: 1px solid #ccc;
+            border-radius:5px;
+            margin: 0.3em 0;
+            padding: 1px 2px;
+            &::placeholder{
+                color: #3f3e3e;
             }
-            &#amount{
-                width: 5em;
-                height: 1.5em;
+            &:focus,&:focus-visible{
+                border-color: #fff;
+                outline: 2px solid #1a73e8;
             }
-        }
+            &.error{
+                border-color: #f00;
+                outline: 1.5px solid #f00;
+                background-color: #ffcccc;
+            }
+         }
         p{
             margin: 0.5em;
         }
-        button{
-            margin: 0.5em 0;
-            padding:0.25em 0.5em;
-            border: 1px solid #000;
-            border-radius: 0.5em;
-            background-color: #ccc;
-        }
+        // button{
+        //     margin: 0.5em 0;
+        //     padding:0.25em 0.5em;
+        //     border: 1px solid #000;
+        //     border-radius: 0.5em;
+        //     background-color: #ccc;
+        // }
         #export-box{
             margin:1em;
             padding: 1em;
             border: 1px solid #ccc;
+        }
+        #error-message-1{
+            transition: 0.5s;
         }
     }
     footer{
@@ -47,3 +57,4 @@ body{
         text-align: center;
     }
 }
+//end

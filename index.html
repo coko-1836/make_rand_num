@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ress@4.0.0/dist/ress.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <!-- JS -->
     <script src="./js/script.js"></script>
@@ -18,14 +17,16 @@
     </header>
     <main>
         <div id="input-area">
-            <p><input type="text" id="min" placeholder="最小値"> ~ <input type="text" id="max" placeholder="最大値"></p>
-            <p><input type="text" id="amount" placeholder="個数"></p>
-            <p><button type="button" id="rand-button">乱数生成</button></p>
+            <p><input type="number" id="min" placeholder="最小値"> ~ <input type="number" id="max" placeholder="最大値"></p>
+            <div id="error-message-1"></div>
+            <p><input type="number" id="amount" placeholder="個数"></p>
+            <p><button type="button" id="rand-button" disabled>乱数生成</button></p>
         </div>
         <div id="export-area">
             <p>結果</p>
             <div id="export-box"></div>
         </div>
+        <button type="button" id="test">test function</button>
     </main>
     <footer>
         <p><i class="fa-regular fa-copyright"></i> <span id="copyright-year"></span> coko-1836</p>
