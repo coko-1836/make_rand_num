@@ -14,26 +14,26 @@ body header h1 {
 body main {
   margin: 1em;
 }
-body main input {
+body main input[type=text], body main input[type=number] {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 0.3em 0;
   padding: 1px 2px;
 }
-body main input::-moz-placeholder {
+body main input[type=text]::-moz-placeholder, body main input[type=number]::-moz-placeholder {
   color: #3f3e3e;
 }
-body main input:-ms-input-placeholder {
+body main input[type=text]:-ms-input-placeholder, body main input[type=number]:-ms-input-placeholder {
   color: #3f3e3e;
 }
-body main input::placeholder {
+body main input[type=text]::placeholder, body main input[type=number]::placeholder {
   color: #3f3e3e;
 }
-body main input:focus, body main input:focus-visible {
+body main input[type=text]:focus, body main input[type=text]:focus-visible, body main input[type=number]:focus, body main input[type=number]:focus-visible {
   border-color: #fff;
   outline: 2px solid #1a73e8;
 }
-body main input.error {
+body main input[type=text].error, body main input[type=number].error {
   border-color: #f00;
   outline: 1.5px solid #f00;
   background-color: #ffcccc;

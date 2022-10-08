@@ -12,7 +12,7 @@ body{
     }
     main{
         margin: 1em;
-        input{
+        input[type="text"],input[type="number"]{
             border: 1px solid #ccc;
             border-radius:5px;
             margin: 0.3em 0;
