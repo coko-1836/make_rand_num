@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <!--ICON-->
+    <link rel="icon" href="img/favicon.ico">
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- JS -->
     <script src="./js/script.js"></script>
     <script src="https://kit.fontawesome.com/c9f063fc15.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -21,13 +26,26 @@
             <div id="error-message-1"></div>
             <p><input type="number" id="amount" placeholder="個数"></p>
             <p><button type="button" id="rand-button" disabled>乱数生成</button></p>
-            <input type="checkbox" id="chk-clear" checked> <label for="chk-clear">前回の結果をクリア</label><p></p>
+            <p><input type="checkbox" id="chk-clear" checked> <label for="chk-clear">前回の結果をクリア</label></p>
+            <p><input type="checkbox" id="chk-del-cookie"><label for="chk-del-cookie">Cookieを削除</label></p>
         </div>
         <div id="export-area">
             <p>結果</p>
             <div id="export-box"></div>
         </div>
-        <!--<button type="button" id="test">test function</button>-->
+        <!-- <div>
+            <button type="button" id="test">test function</button>
+            <button type="button" id="test2">test2 function</button>
+        </div> -->
+        <div id="description">
+            <h2>使い方</h2>
+            <p>この乱数メーカーの使い方を簡単に説明するよ!</p>
+            <p>最小値、最大値、個数に数字を入れて乱数生成ボタンを押すだけ!</p>
+            <p>(最小値) > (最大値) にすると<span class="red bold italic">エラー</span>になってボタンが押せないよ!</p>
+            <h3>TOPICS</h3>
+            <p>入力されて値はCookieに保存されるから毎回入れなおさなくていいよ!</p>
+            <p>Cookieなんて使うなって人は「Cookieを削除」をクリック!</p>
+        </div>
     </main>
     <footer>
         <p><i class="fa-regular fa-copyright"></i> <span id="copyright-year"></span> coko-1836</p>

@@ -2,6 +2,7 @@ body {
   background-color: #fff;
   margin: 0;
   padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
 }
 body header {
   padding: 1em;
@@ -49,10 +50,26 @@ body main #export-box {
 body main #error-message-1 {
   transition: 0.5s;
 }
+body main #description {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #eee;
+}
 body footer {
   background-color: #eee;
   padding: 1em;
   margin-top: 1em;
   border-top: 0.3em solid #ff8c00;
   text-align: center;
+}
+body .red {
+  color: #f00;
+}
+body .italic {
+  font-style: italic;
+}
+body .bold {
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */
