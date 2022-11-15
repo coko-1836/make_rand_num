@@ -3,7 +3,9 @@ body{
     margin:0;
     padding:0;
     font-family: 'Noto Sans JP', sans-serif;
+    box-sizing: border-box;
     header{
+        //background-color: #ff8c00;
         padding: 1em;
         margin-bottom: 1em;
         border-bottom: 1px solid #ccc;
@@ -30,17 +32,30 @@ body{
                 outline: 1.5px solid #f00;
                 background-color: #ffcccc;
             }
-         }
+        }
         p{
             margin: 0.5em;
         }
-        // button{
-        //     margin: 0.5em 0;
-        //     padding:0.25em 0.5em;
-        //     border: 1px solid #000;
-        //     border-radius: 0.5em;
-        //     background-color: #ccc;
-        // }
+        button{
+            padding:0.5em 1em;
+            background-color: #1a73e8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.0rem;
+            letter-spacing: 0.02rem;
+            transition: .3s;
+            &:hover:not(:disabled){
+                box-shadow: 1px 1px 5px 1px #999;            
+                background-color: #1861c2;
+            }
+            &:disabled{
+                background-color: #ccc;
+                color:#aaa;
+                cursor: not-allowed;
+            }
+        }
         #export-box{
             margin:1em;
             padding: 1em;
@@ -51,10 +66,47 @@ body{
         }
         #description{
             margin: 1em 0;
-            padding: 0.5em 1em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #eee;
+            padding: 1rem;
+            border-top: 1px solid #ccc;
+            h1,h2,h3,h4,h5,h6{
+                margin: 0;
+                padding: 0;
+            }
+        }
+        #policy{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.5s;
+            #policy-content{
+                //position: relative;
+                margin: 0 0 10em 0;
+                padding: 1em;
+                border: 1px solid #ccc;
+                box-shadow: 0px 0px 14px 2px rgba(0, 0, 0, 0.8);
+                background-color: #fff;
+                transition: opacity 0.3s;
+                a{
+                    
+                }
+                #close-policy{
+                    position: absolute;
+                    top:10px;
+                    right: 10px;
+                    #close-policy-button{
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+            h2{
+                margin:0;
+                padding:0.5em 1.0rem;
+                border-bottom: 1px solid #ccc;
+            }
         }
     }
     footer{
@@ -63,6 +115,53 @@ body{
         margin-top: 1em;
         border-top: 0.3em solid #ff8c00;
         text-align: center;
+    }
+    #check-cookie{
+        position:fixed;
+        bottom: 0;
+        left: 0;
+        margin:1rem 0;
+        width: 100%;
+        display: flex;
+        justify-content:space-between;
+        background-color: rgba(255, 255, 255,0.5);
+        border-top: 1px solid #ccc;
+        .content{
+            p{
+                margin:0.1em 0.3em;
+                padding:0;
+            }
+            h4{
+                margin:0.1em 0.3em;
+                padding:0;
+            }
+            &.button-area{
+                margin:0.5em;
+                button{
+                    width: 10rem;
+                    padding:0.5em 1em;
+                    margin: 0.1em 0;
+                    background-color: #1a73e8;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 1.0rem;
+                    letter-spacing: 0.02rem;
+                    transition: .3s;
+                    &:hover:not(:disabled){
+                        box-shadow: 1px 1px 5px 1px #999;       
+                        background-color: #1861c2;
+                    }
+                    &:disabled{
+                        background-color: #ccc;
+                        color:#aaa;
+                        cursor: not-allowed;
+                    }
+                }
+            }
+        }
+        
     }
     .red{
         color: #f00;

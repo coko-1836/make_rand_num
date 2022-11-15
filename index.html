@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>乱数メーカー</title>
     <!--ICON-->
     <link rel="icon" href="img/favicon.ico">
     <!-- CSS -->
@@ -33,10 +33,10 @@
             <p>結果</p>
             <div id="export-box"></div>
         </div>
-        <!-- <div>
+        <div id="test">
             <button type="button" id="test">test function</button>
             <button type="button" id="test2">test2 function</button>
-        </div> -->
+        </div>
         <div id="description">
             <h2>使い方</h2>
             <p>この乱数メーカーの使い方を簡単に説明するよ!</p>
@@ -46,9 +46,33 @@
             <p>入力されて値はCookieに保存されるから毎回入れなおさなくていいよ!</p>
             <p>Cookieなんて使うなって人は「Cookieを削除」をクリック!</p>
         </div>
+        <div id="policy">
+            <div id="policy-content">
+                <h2>プライバシーポリシー</h2>
+                <p>当サイトで収集される情報は管理者には知らされません。</p>
+                <p>当サイトでは個人情報漏洩防止のために、必要な事項を実施しています。</p>
+                <a href="#wip">お問い合わせ</a>
+                <div id="close-policy">
+                    <button type="button" id="close-policy-button">x</button>
+                </div>
+            </div> 
+        </div>
     </main>
     <footer>
         <p><i class="fa-regular fa-copyright"></i> <span id="copyright-year"></span> coko-1836</p>
     </footer>
+    <div id="check-cookie">
+        <div class="content">
+            <h4>Cookieについて</h4>
+            <p>当サイトは利便性のためにCookieを使用しています。</p>
+            <p>当サイトではCookieに個人情報を保存していません。</p>
+            <a href="#undefined" id="open-policy">プライバシーポリシー</a>
+        </div>
+        <div class="content button-area">
+            <p><button type="button" id="accept-cookie">同意する</button></p>
+            <p><button type="button" id="reject-cookie">同意しない</button></p>
+        </div>
+        
+    </div>
 </body>
 </html>

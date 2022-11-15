@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans JP", sans-serif;
+  box-sizing: border-box;
 }
 body header {
   padding: 1em;
@@ -42,6 +43,26 @@ body main input[type=text].error, body main input[type=number].error {
 body main p {
   margin: 0.5em;
 }
+body main button {
+  padding: 0.5em 1em;
+  background-color: #1a73e8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.02rem;
+  transition: 0.3s;
+}
+body main button:hover:not(:disabled) {
+  box-shadow: 1px 1px 5px 1px #999;
+  background-color: #1861c2;
+}
+body main button:disabled {
+  background-color: #ccc;
+  color: #aaa;
+  cursor: not-allowed;
+}
 body main #export-box {
   margin: 1em;
   padding: 1em;
@@ -52,10 +73,43 @@ body main #error-message-1 {
 }
 body main #description {
   margin: 1em 0;
-  padding: 0.5em 1em;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+}
+body main #description h1, body main #description h2, body main #description h3, body main #description h4, body main #description h5, body main #description h6 {
+  margin: 0;
+  padding: 0;
+}
+body main #policy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+body main #policy #policy-content {
+  margin: 0 0 10em 0;
+  padding: 1em;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #eee;
+  box-shadow: 0px 0px 14px 2px rgba(0, 0, 0, 0.8);
+  background-color: #fff;
+  transition: opacity 0.3s;
+}
+body main #policy #policy-content #close-policy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+body main #policy #policy-content #close-policy #close-policy-button {
+  margin: 0;
+  padding: 0;
+}
+body main #policy h2 {
+  margin: 0;
+  padding: 0.5em 1rem;
+  border-bottom: 1px solid #ccc;
 }
 body footer {
   background-color: #eee;
@@ -63,6 +117,50 @@ body footer {
   margin-top: 1em;
   border-top: 0.3em solid #ff8c00;
   text-align: center;
+}
+body #check-cookie {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid #ccc;
+}
+body #check-cookie .content p {
+  margin: 0.1em 0.3em;
+  padding: 0;
+}
+body #check-cookie .content h4 {
+  margin: 0.1em 0.3em;
+  padding: 0;
+}
+body #check-cookie .content.button-area {
+  margin: 0.5em;
+}
+body #check-cookie .content.button-area button {
+  width: 10rem;
+  padding: 0.5em 1em;
+  margin: 0.1em 0;
+  background-color: #1a73e8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.02rem;
+  transition: 0.3s;
+}
+body #check-cookie .content.button-area button:hover:not(:disabled) {
+  box-shadow: 1px 1px 5px 1px #999;
+  background-color: #1861c2;
+}
+body #check-cookie .content.button-area button:disabled {
+  background-color: #ccc;
+  color: #aaa;
+  cursor: not-allowed;
 }
 body .red {
   color: #f00;

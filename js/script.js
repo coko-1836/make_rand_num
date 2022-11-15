@@ -29,27 +29,17 @@ function isMinMax(min, max) {
     }
 }
 /**
- * @param {number} x
+ * 
+ * @param {number} x 
+ * @returns {boolean}
  */
-function isNumber(x){
-    if(x != NaN) {
-        return true;
-    }else{
-        return false;
-    }
-}
+function isNumber(x) { return x != NaN; }
 /**
  * 
  * @param {string} str 
- * @returns boolean
+ * @returns 
  */
- function isEmpty(str) {
-    if(str == "") {
-        return true;
-    }else{
-        return false;
-    }
-}
+function isStringEmpty(str) { return str == ""; }
 /**
  * 
  * @returns {{min: number, max: number, amount: number}} 
@@ -68,9 +58,9 @@ function getFormValue() {
  * @param {number} amount 個数
  */
 function setCookie(min,max,amount) {
-    document.cookie = "min=" + min +";sameSite=strict";
-    document.cookie = "max=" + max +";sameSite=strict";
-    document.cookie = "amount=" + amount +";sameSite=strict";
+    document.cookie = "min=" + min +";sameSite=strict;secure";
+    document.cookie = "max=" + max +";sameSite=strict;secure";
+    document.cookie = "amount=" + amount +";sameSite=strict;secure";
     console.log(document.cookie);
 }
 /**
@@ -93,9 +83,6 @@ function getCookie(){
             amount = e.trim().split("=")[1];
         }
     });
-    // (typeof min == "undefined") ? min = "" : min = min;
-    // (typeof max == "undefined") ? max = "" : max = max;
-    // (typeof amount == "undefined") ? amount = "" : amount = amount;
     console.log(min,max,amount);
     return [min,max,amount];
 }
@@ -111,23 +98,17 @@ function deleteCookie() {
 /**
  * ボタンクリック時の処理
  */
-function buttonClick() {
+function buttonClick(isAcceptCookie) {
     let min = getFormValue()[0];
     let max = getFormValue()[1];
     let amount = getFormValue()[2];
     let randnum = setIntRandom(min, max, amount);
     let isCheck = document.getElementById("chk-clear").checked;
     let isDelCookieCheck = document.getElementById("chk-del-cookie").checked;
-    if(isCheck) {
-        document.getElementById("export-box").innerHTML = "";
-    }
-    for(let i = 0; i < amount; i++) {
-        document.getElementById("export-box").append(randnum[i] + " ");
-    }
-    setCookie(min,max,amount);
-    if(isDelCookieCheck) {
-        deleteCookie();
-    }
+    if(isCheck) {document.getElementById("export-box").innerHTML = "";}
+    for(let i = 0; i < amount; i++) {document.getElementById("export-box").append(randnum[i] + " ");}
+    if(isAcceptCookie){setCookie(min,max,amount);}
+    if(isDelCookieCheck) {deleteCookie();}
     
 }
 /**
@@ -135,36 +116,30 @@ function buttonClick() {
  * @param {string} message
  * @param {string} messagePlace 
  */
-function showMessage(message, messagePlace){
-    document.getElementById(messagePlace).innerHTML = message;
-}
+function showMessage(message, messagePlace){ document.getElementById(messagePlace).innerHTML = message; }
 /**
  * 
  * @param {string} messagePlace 
  */
-function clearMessage(messagePlace){
-    document.getElementById(messagePlace).innerHTML = "";
-}
+function clearMessage(messagePlace){ document.getElementById(messagePlace).innerHTML = "";}
 /**
  * formの最小値と最大値のチェック
  */
 function formMinMaxCheck() {
     let min = getFormValue()[0];
     let max = getFormValue()[1];
-    //error pattern 1 "min max check"
-    if(isMinMax(min, max)) { //min <= max
+    if(isMinMax(min, max)) {
         document.getElementById("min").classList.remove("error");
         document.getElementById("max").classList.remove("error");
         //console.log("min <= max");
         clearMessage("error-message-1");
-        return true; //OK
-        //document.getElementById("rand-button").disabled = false;
+        return true; 
     }else{ //min > max
         document.getElementById("min").classList.add("error");
         document.getElementById("max").classList.add("error");
         //console.log("min > max")
         showMessage("最小値は最大値以下にしてください。", "error-message-1");
-        return false; //NG
+        return false; 
     }
     
 }
@@ -178,7 +153,7 @@ function checkEmpty() {
     let min = getFormValue()[0];
     let max = getFormValue()[1];
     let amount = getFormValue()[2];
-    if(isEmpty(min) || isEmpty(max) || isEmpty(amount)) {
+    if(isStringEmpty(min) || isStringEmpty(max) || isStringEmpty(amount)) {
         //some input is empty
         return true; //NG
     }else{
@@ -201,54 +176,62 @@ function setValueFromCookie(){
         document.getElementById("amount").value = amount;
     }
 }
-window.onload = function() {
-    /* set version */
-    let version = "0.4β";
-    document.title = "乱数メーカー " + version;
-    document.getElementById("version").innerHTML = version;
-    /* set copyright year */
-    const START_YEAR = 2022;
-    let YEAR_SPAN = null;
-    let date = new Date();
-    let nowYear = date.getFullYear();
-    (nowYear == START_YEAR) ? YEAR_SPAN = START_YEAR : YEAR_SPAN = START_YEAR + " - " + nowYear;
-    document.getElementById("copyright-year").innerHTML = YEAR_SPAN;
-    /*set value from cookie*/
-    setValueFromCookie();
+function changeButton(){
     if(formMinMaxCheck() && !checkEmpty()) {
         document.getElementById("rand-button").disabled = false;
     }else{
         document.getElementById("rand-button").disabled = true;
     }
-    /*button event*/
-    document.getElementById("rand-button").addEventListener("click", buttonClick);
+}
+/**
+ * check cookieを閉じるだけ
+ */
+function closeCheckCookie(){document.getElementById("check-cookie").style.display = "none";}
+window.onload = function() {
+    /* set version */
+    let version = "0.5β";
+    document.title = "乱数メーカー " + version;
+    document.getElementById("version").innerHTML = version;
+    /* set copyright year */
+    const START_YEAR = 2022;
+    let yearSpan = null;
+    let date = new Date();
+    let nowYear = date.getFullYear();
+    (nowYear == START_YEAR) ? yearSpan = START_YEAR : yearSpan = START_YEAR + " - " + nowYear;
+    document.getElementById("copyright-year").innerHTML = yearSpan;
+    /*set value from cookie*/
+    setValueFromCookie();
+    changeButton();
     /*form check*/
-    document.getElementById("min").addEventListener("input", function() {
-        if(formMinMaxCheck() && !checkEmpty()) {
-            document.getElementById("rand-button").disabled = false;
-        }else{
-            document.getElementById("rand-button").disabled = true;
-        }
-    });
-    document.getElementById("max").addEventListener("input", function() {
-        if(formMinMaxCheck() && !checkEmpty()) {
-            document.getElementById("rand-button").disabled = false;
-        }else{
-            document.getElementById("rand-button").disabled = true;
-        }
-    });
-    document.getElementById("amount").addEventListener("input", function() {
-        if(formMinMaxCheck() && !checkEmpty()) {
-            document.getElementById("rand-button").disabled = false;
-        }else{
-            document.getElementById("rand-button").disabled = true;
-        }
-    });
+    document.getElementById("min").addEventListener("input", changeButton);
+    document.getElementById("max").addEventListener("input", changeButton);
+    document.getElementById("amount").addEventListener("input", changeButton);
     /*test code*/
-    // document.getElementById("test").addEventListener("click", function() {
-    //     getCookie();
-    // });
-    // document.getElementById("test2").addEventListener("click", function() {
-    //     deleteCookie();
-    // });
+    document.getElementById("test").addEventListener("click", getCookie);
+    document.getElementById("test2").addEventListener("click", deleteCookie);
+    /*close policy*/
+    const POLICY = document.getElementById("policy");
+    document.getElementById("close-policy-button").addEventListener("click", function(){
+       POLICY.style.visibility = "hidden";
+       POLICY.style.opacity = "0";
+    });
+    document.getElementById("open-policy").addEventListener("click", function(){
+        POLICY.style.visibility = "visible";
+        POLICY.style.opacity = "1";
+    });
+    /*cookie button*/
+    let isAcceptCookie = true;
+    //accept
+    document.getElementById("accept-cookie").addEventListener("click", function(){
+        isAcceptCookie = true;
+        closeCheckCookie();
+    });
+    document.getElementById("reject-cookie").addEventListener("click", function(){
+        isAcceptCookie = false;
+        closeCheckCookie();
+    });
+    /*button event*/
+    document.getElementById("rand-button").addEventListener("click", function() {
+        buttonClick(isAcceptCookie);
+    });
 }
