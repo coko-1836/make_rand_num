@@ -88,6 +88,7 @@ body main #policy {
   visibility: hidden;
   opacity: 0;
   transition: 0.5s;
+  width: 80%;
 }
 body main #policy #policy-content {
   margin: 0 0 10em 0;
@@ -103,8 +104,16 @@ body main #policy #policy-content #close-policy {
   right: 10px;
 }
 body main #policy #policy-content #close-policy #close-policy-button {
+  color: #000;
+  border: none;
+  background-color: transparent;
   margin: 0;
   padding: 0;
+  font-size: 3rem;
+  cursor: pointer;
+}
+body main #policy #policy-content #close-policy #close-policy-button:hover {
+  box-shadow: none;
 }
 body main #policy h2 {
   margin: 0;
@@ -126,7 +135,7 @@ body #check-cookie {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   border-top: 1px solid #ccc;
 }
 body #check-cookie .content p {

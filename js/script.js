@@ -57,10 +57,11 @@ function getFormValue() {
  * @param {number} max 最大値
  * @param {number} amount 個数
  */
-function setCookie(min,max,amount) {
+function setCookie(min,max,amount,isAcceptCookie) {
     document.cookie = "min=" + min +";sameSite=strict;secure";
     document.cookie = "max=" + max +";sameSite=strict;secure";
     document.cookie = "amount=" + amount +";sameSite=strict;secure";
+    document.cookie = "isAcceptCookie=" + isAcceptCookie +";sameSite=strict;secure";
     console.log(document.cookie);
 }
 /**
@@ -72,6 +73,7 @@ function getCookie(){
     let min;
     let max;
     let amount;
+    let isAcceptCookie;
     cookie.forEach(e => {
         if(e.trim().startsWith("min=")) {
             min = e.trim().split("=")[1];
@@ -82,9 +84,12 @@ function getCookie(){
         if(e.trim().startsWith("amount=")) {
             amount = e.trim().split("=")[1];
         }
+        if(e.trim().startsWith("isAcceptCookie=")) {
+            isAcceptCookie = e.trim().split("=")[1];
+        }
     });
-    console.log(min,max,amount);
-    return [min,max,amount];
+    console.log(min,max,amount,isAcceptCookie);
+    return [min,max,amount,isAcceptCookie];
 }
 /**
  * delete cookie
@@ -93,7 +98,20 @@ function deleteCookie() {
     document.cookie = "min=;max-age=0;";
     document.cookie = "max=;max-age=0;";
     document.cookie = "amount=;max-age=0;";
+    document.cookie = "isAcceptCookie=;max-age=0;";
 }
+/**
+ * 指定されたDOMを表示します
+ * displayのtypeは選択してください
+ * @param {string} id 
+ * @param {string} displayType block | flex | flexbox | inline | inline-block | inline-flex | inline-flexbox | inline-table | list-item | run-in | table | table-caption | table-column-group | table-header-group | table-footer-group | table-row-group | table-cell | table-column | table-row | none | initial | inherit
+ */
+function visibleDOMById(id,displayType){document.getElementById(id).style.display = displayType;}
+/**
+ * 指定されたDOMを隠します
+ * @param {string} id 
+ */
+function hiddenDOMById(id){document.getElementById(id).style.display = "none";}
 /*特有*/
 /**
  * ボタンクリック時の処理
@@ -107,9 +125,8 @@ function buttonClick(isAcceptCookie) {
     let isDelCookieCheck = document.getElementById("chk-del-cookie").checked;
     if(isCheck) {document.getElementById("export-box").innerHTML = "";}
     for(let i = 0; i < amount; i++) {document.getElementById("export-box").append(randnum[i] + " ");}
-    if(isAcceptCookie){setCookie(min,max,amount);}
+    if(isAcceptCookie){setCookie(min,max,amount,isAcceptCookie);}
     if(isDelCookieCheck) {deleteCookie();}
-    
 }
 /**
  * 
@@ -165,6 +182,7 @@ function setValueFromCookie(){
     let min = getCookie()[0];
     let max = getCookie()[1];
     let amount = getCookie()[2];
+    let isAcceptCookie = getCookie()[3];
     console.log(min,max,amount);
     if(min != ""){
         document.getElementById("min").value = min;
@@ -175,6 +193,9 @@ function setValueFromCookie(){
     if(amount != ""){
         document.getElementById("amount").value = amount;
     }
+    if(isAcceptCookie == "true"){
+        hiddenDOMById("check-cookie");
+    }
 }
 function changeButton(){
     if(formMinMaxCheck() && !checkEmpty()) {
@@ -183,13 +204,13 @@ function changeButton(){
         document.getElementById("rand-button").disabled = true;
     }
 }
-/**
- * check cookieを閉じるだけ
- */
-function closeCheckCookie(){document.getElementById("check-cookie").style.display = "none";}
+// /**
+//  * check cookieを閉じるだけ
+//  */
+// function closeCheckCookie(){document.getElementById("check-cookie").style.display = "none";}
 window.onload = function() {
     /* set version */
-    let version = "0.5β";
+    let version = "0.6β";
     document.title = "乱数メーカー " + version;
     document.getElementById("version").innerHTML = version;
     /* set copyright year */
@@ -207,8 +228,8 @@ window.onload = function() {
     document.getElementById("max").addEventListener("input", changeButton);
     document.getElementById("amount").addEventListener("input", changeButton);
     /*test code*/
-    document.getElementById("test").addEventListener("click", getCookie);
-    document.getElementById("test2").addEventListener("click", deleteCookie);
+    // document.getElementById("test").addEventListener("click", getCookie);
+    // document.getElementById("test2").addEventListener("click", deleteCookie);
     /*close policy*/
     const POLICY = document.getElementById("policy");
     document.getElementById("close-policy-button").addEventListener("click", function(){
@@ -224,11 +245,11 @@ window.onload = function() {
     //accept
     document.getElementById("accept-cookie").addEventListener("click", function(){
         isAcceptCookie = true;
-        closeCheckCookie();
+        hiddenDOMById("check-cookie");
     });
     document.getElementById("reject-cookie").addEventListener("click", function(){
         isAcceptCookie = false;
-        closeCheckCookie();
+        hiddenDOMById("check-cookie");
     });
     /*button event*/
     document.getElementById("rand-button").addEventListener("click", function() {
