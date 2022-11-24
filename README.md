@@ -11,4 +11,5 @@ In this site,you can make random numbers in website.
 
 Update Log
 * 0.5 Beta Add check cookie 
-* 0.6 Bata fix some designs
+* 0.6 Beta fix some designs
+* 0.7 Beta Fix some bugs related to cookies

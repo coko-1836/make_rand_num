@@ -58,10 +58,10 @@ function getFormValue() {
  * @param {number} amount 個数
  */
 function setCookie(min,max,amount,isAcceptCookie) {
-    document.cookie = "min=" + min +";sameSite=strict;secure";
-    document.cookie = "max=" + max +";sameSite=strict;secure";
-    document.cookie = "amount=" + amount +";sameSite=strict;secure";
-    document.cookie = "isAcceptCookie=" + isAcceptCookie +";sameSite=strict;secure";
+    document.cookie = "min=" + min +";sameSite=strict;secure;max-age=31536000";
+    document.cookie = "max=" + max +";sameSite=strict;secure;max-age=31536000";
+    document.cookie = "amount=" + amount +";sameSite=strict;secure;max-age=31536000";
+    document.cookie = "isAcceptCookie=" + isAcceptCookie +";sameSite=strict;secure;max-age=31536000";
     console.log(document.cookie);
 }
 /**
@@ -210,7 +210,7 @@ function changeButton(){
 // function closeCheckCookie(){document.getElementById("check-cookie").style.display = "none";}
 window.onload = function() {
     /* set version */
-    let version = "0.6β";
+    let version = "0.7β";
     document.title = "乱数メーカー " + version;
     document.getElementById("version").innerHTML = version;
     /* set copyright year */
